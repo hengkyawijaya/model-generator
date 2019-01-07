@@ -1,0 +1,22 @@
+version: '3'
+services:
+  some_postgres:
+    container_name: some-postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    build:
+      context: ./
+      dockerfile: ./postgre.Dockerfile
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: bismillah
+      POSTGRES_DB: postgres
+      POSTGRES_INITDB_XLOGDIR: --xlogdir
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "5433:5432"
+  

@@ -1,0 +1,51 @@
+{
+  "name" : "users",
+  "schema" : [
+    {
+      "name" : "id", 
+      "type" : "serial",
+      "primary_key" : true
+    },
+    {
+      "name" : "name",
+      "type" : "text",
+      "not_null": true
+    },
+    {
+      "name" : "email",
+      "type" : "text",
+      "not_null": true
+    },
+    {
+      "name" : "password",
+      "type" : "text",
+      "not_null": true
+    }      
+  ],
+  "seeder": {
+    "generator_seeder" : {
+      "target_schema":[
+        {
+          "name" : "name",
+          "type" : "name"
+        },
+        {
+          "name" : "email",
+          "type" : "email"
+        },
+        {
+          "name" : "password",
+          "type" : "constant",
+          "constant": "bismillah"
+        }   
+      ],
+      "total_seed": 100
+    }
+  }, 
+  "manual_seeder" : {
+    "target_schema": "name, email, password",
+    "values": [
+      "'hengky', 'admin@gmail.com', 'bismillah'"
+    ]
+  }
+}
